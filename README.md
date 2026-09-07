@@ -48,6 +48,7 @@ EcoSort AI is a web-based intelligent assistant designed to help users identify,
 <p align="center">
   <img src="public/preview.png" alt="EcoSort AI Interface Preview" width="850">
 </p>
+
 ---
 
 ## Built With
