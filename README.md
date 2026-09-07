@@ -1,4 +1,3 @@
-```markdown
 # EcoSort AI — Smart Waste Sorting Assistant
 
 EcoSort AI adalah asisten cerdas berbasis web yang memandu pengguna mengidentifikasi, memilah, dan mengelola sampah secara tepat serta ramah lingkungan. Aplikasi ini mengintegrasikan kapabilitas multimodal dari model **Gemini 3.5 Flash Lite** untuk memproses input teks, citra fisik, dokumen daftar limbah, maupun rekaman suara langsung dari antarmuka web.
