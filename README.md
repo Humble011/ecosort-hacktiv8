@@ -122,6 +122,3 @@ Akses aplikasi pada peramban melalui alamat `http://localhost:3000`.
 
 Proyek ini disusun untuk penyelesaian Final Project program Hacktiv8 AI Engineering Track dan didistribusikan di bawah lisensi MIT.
 
-```
-
-```
