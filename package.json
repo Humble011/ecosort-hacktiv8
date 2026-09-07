@@ -2,14 +2,21 @@
   "name": "ecosort-ai",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
+  "description": "Smart Multimodal Waste Sorting Assistant powered by Gemini 3.5 Flash Lite",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "gemini-api",
+    "waste-sorting",
+    "multimodal-ai",
+    "express",
+    "tailwind"
+  ],
+  "author": "Muhammad Hilmi",
+  "license": "MIT",
   "dependencies": {
     "@google/genai": "^2.21.0",
     "cors": "^2.8.6",
