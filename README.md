@@ -4,7 +4,7 @@
 [![Forks](https://img.shields.io/github/forks/Humble011/ecosort-hacktiv8.svg?style=for-the-badge)](https://github.com/Humble011/ecosort-hacktiv8/network/members)
 [![Stargazers](https://img.shields.io/github/stars/Humble011/ecosort-hacktiv8.svg?style=for-the-badge)](https://github.com/Humble011/ecosort-hacktiv8/stargazers)
 [![Issues](https://img.shields.io/github/issues/Humble011/ecosort-hacktiv8.svg?style=for-the-badge)](https://github.com/Humble011/ecosort-hacktiv8/issues)
-[![License: MIT](https://img.shields.io/github/license/Humble011/ecosort-hacktiv8?style=for-the-badge&color=blue)](LICENSE)
+[![MIT License](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=for-the-badge)](LICENSE)
 <br />
 
 <a href="https://github.com/Humble011/ecosort-hacktiv8">
