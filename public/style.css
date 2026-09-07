@@ -1,6 +1,3 @@
-/* ========================================================
-   DEFAULT THEME: LIGHT MODE
-======================================================== */
 :root {
   --bg-body: #f8fafc;
   --bg-card: rgba(255, 255, 255, 0.92);
@@ -19,9 +16,6 @@
   --shadow-color: rgba(15, 23, 42, 0.08);
 }
 
-/* ========================================================
-   DARK MODE OVERRIDE
-======================================================== */
 html.dark {
   --bg-body: #030712;
   --bg-card: rgba(15, 23, 42, 0.90);
@@ -40,9 +34,6 @@ html.dark {
   --shadow-color: rgba(0, 0, 0, 0.5);
 }
 
-/* ========================================================
-   BACKGROUND DENGAN SVG PATTERN (LIGHT & DARK)
-======================================================== */
 body {
   background-color: #f8fafc !important;
   background-image:
@@ -63,9 +54,6 @@ html.dark body {
     url('./pattern.svg') !important;
 }
 
-/* ========================================================
-   CHAT CONTAINER & KOMPONEN UI
-======================================================== */
 .chat-container {
   background-color: var(--bg-card);
   border-color: var(--border-card);
@@ -94,7 +82,6 @@ html.dark body {
   border-color: var(--border-chip);
 }
 
-/* Buttons */
 .btn-theme-toggle {
   background-color: var(--bg-chip);
   border-color: var(--border-chip);
@@ -130,7 +117,6 @@ html.dark body {
   color: #059669;
 }
 
-/* Input Form */
 .input-chat-style {
   background-color: var(--bg-input);
   border-color: var(--border-input);
@@ -156,14 +142,12 @@ html.dark body {
   border-color: var(--border-chip);
 }
 
-/* Bubble Bot */
 .bot-bubble-wrapper {
   background-color: var(--bg-bot-bubble);
   border: 1px solid var(--border-bot-bubble);
   color: var(--text-bot-bubble);
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -182,7 +166,6 @@ html.dark body {
   background: var(--text-sub);
 }
 
-/* Animasi Masuk Pesan */
 #chat-box>div {
   animation: fadeIn 0.2s ease-out;
 }
@@ -199,9 +182,6 @@ html.dark body {
   }
 }
 
-/* ========================================================
-   FORMATTING RESPON BOT (MARKDOWN)
-======================================================== */
 .prose-chat p {
   margin-bottom: 0.5rem;
 }

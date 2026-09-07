@@ -13,16 +13,17 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
-// Daftar MIME Type yang didukung (Image, Document, Audio)
+// Batasan format berkas multimodal yang didukung
 const allowedMimeTypes = [
     'image/jpeg', 'image/png', 'image/webp',
     'application/pdf', 'text/plain', 'text/csv',
     'audio/mpeg', 'audio/mp3', 'audio/wav', 'audio/ogg', 'audio/m4a', 'audio/webm'
 ];
 
+// Konfigurasi Multer memory storage dengan batas ukuran 10MB
 const upload = multer({
     storage: multer.memoryStorage(),
-    limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
+    limits: { fileSize: 10 * 1024 * 1024 },
     fileFilter: (req, file, cb) => {
         if (allowedMimeTypes.includes(file.mimetype)) {
             cb(null, true);
@@ -34,7 +35,7 @@ const upload = multer({
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-// System Instruction untuk dialog dua arah bertahap
+// Panduan persona dan instruksi alur percakapan Gemini
 const SYSTEM_INSTRUCTION = `
 Role: Anda adalah EcoSort AI, asisten pemilahan dan pengelolaan sampah ramah lingkungan yang solutif, ramah, dan interaktif.
 
@@ -70,13 +71,14 @@ app.get('/api/health', (req, res) => {
     });
 });
 
+// Endpoint inferensi chat dan pemrosesan multimodal
 app.post('/api/chat', upload.single('file'), async (req, res) => {
     try {
         const userMessage = req.body.message || '';
         const uploadedFile = req.file;
         let history = [];
 
-        // Parsing context history dari client
+        // Ekstraksi konteks percakapan multi-turn dari client
         if (req.body.history) {
             try {
                 history = JSON.parse(req.body.history);
@@ -89,7 +91,7 @@ app.post('/api/chat', upload.single('file'), async (req, res) => {
             return res.status(400).json({ error: 'Harap berikan teks pertanyaan atau unggah berkas.' });
         }
 
-        // Siapkan parts untuk input terbaru
+        // Penyusunan komponen data input (inline buffer base64 & teks)
         const currentParts = [];
 
         if (uploadedFile) {
@@ -107,7 +109,6 @@ app.post('/api/chat', upload.single('file'), async (req, res) => {
             currentParts.push({ text: 'Tolong identifikasi sampah pada berkas ini.' });
         }
 
-        // Gabungkan riwayat chat sebelumnya dengan input terbaru
         const contents = [
             ...history,
             {

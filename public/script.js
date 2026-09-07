@@ -15,9 +15,6 @@ const previewThumb = document.getElementById('preview-thumb');
 const btnRemoveFile = document.getElementById('btn-remove-file');
 const welcomeBanner = document.getElementById('welcome-banner');
 
-// ==========================================
-// 1. PENGATUR TEMA (LIGHT MODE DEFAULT)
-// ==========================================
 const btnTheme = document.getElementById('btn-theme');
 const themeIcon = document.getElementById('theme-icon');
 
@@ -47,12 +44,9 @@ btnTheme.addEventListener('click', () => {
 
 initTheme();
 
-// ==========================================
-// 2. STATE & PERSISTENSI LOCAL STORAGE
-// ==========================================
 let selectedFile = null;
 
-// Ambil riwayat API & riwayat tampilan dari localStorage
+// Sinkronisasi riwayat chat API dan tampilan di localStorage
 let chatHistory = JSON.parse(localStorage.getItem('ecosort_api_history') || '[]');
 let chatUIHistory = JSON.parse(localStorage.getItem('ecosort_ui_history') || '[]');
 
@@ -61,7 +55,6 @@ function saveToLocalStorage() {
   localStorage.setItem('ecosort_ui_history', JSON.stringify(chatUIHistory));
 }
 
-// Render ulang pesan-pesan lama saat halaman di-refresh
 function loadSavedChatUI() {
   if (chatUIHistory.length > 0) {
     if (welcomeBanner) welcomeBanner.style.display = 'none';
@@ -78,15 +71,13 @@ function loadSavedChatUI() {
   }
 }
 
-// ==========================================
-// 3. FILE ATTACHMENT HANDLER
-// ==========================================
 btnAttach.addEventListener('click', () => fileInput.click());
 
 fileInput.addEventListener('change', (e) => {
   const file = e.target.files[0];
   if (!file) return;
 
+  // Validasi durasi berkas audio maksimal 60 detik
   if (file.type.startsWith('audio/')) {
     const audioTest = document.createElement('audio');
     audioTest.preload = 'metadata';
@@ -108,6 +99,7 @@ fileInput.addEventListener('change', (e) => {
 });
 
 function setAttachmentPreview(file) {
+  // Batas ukuran berkas maksimal 10MB
   if (file.size > 10 * 1024 * 1024) {
     alert('Batas ukuran file maksimal adalah 10MB.');
     clearAttachment();
@@ -118,7 +110,6 @@ function setAttachmentPreview(file) {
   previewName.textContent = file.name;
   previewSize.textContent = `(${(file.size / (1024 * 1024)).toFixed(2)} MB)`;
 
-  // Jika file adalah gambar, tampilkan thumbnail fotonya
   if (file.type.startsWith('image/')) {
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -128,7 +119,6 @@ function setAttachmentPreview(file) {
     };
     reader.readAsDataURL(file);
   } else {
-    // Jika bukan gambar (audio/pdf/dokumen), tampilkan ikon Lucide biasa
     previewThumb.classList.add('hidden');
     previewThumb.src = '';
     previewIcon.classList.remove('hidden');
@@ -161,9 +151,7 @@ function clearAttachment() {
   filePreview.classList.remove('flex');
 }
 
-// ==========================================
-// 4. SUBMIT CHAT & INTEGRASI BACKEND
-// ==========================================
+// Penanganan submit formulir dan pengiriman muatan ke server
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -175,7 +163,6 @@ form.addEventListener('submit', async (e) => {
   const fileName = selectedFile ? selectedFile.name : null;
   const fileType = selectedFile ? selectedFile.type : null;
 
-  // Render bubble user di UI & simpan ke riwayat lokal
   const localImgUrl = (selectedFile && fileType && fileType.startsWith('image/')) ? URL.createObjectURL(selectedFile) : null;
   appendUserMessage(text, fileName, fileType, localImgUrl, true);
 
@@ -203,7 +190,6 @@ form.addEventListener('submit', async (e) => {
     if (res.ok && data.reply) {
       renderFormattedReply(botLoadingEl, data.reply);
 
-      // Simpan ke riwayat AI untuk konteks multi-turn
       chatHistory.push({
         role: 'user',
         parts: [{ text: textForHistory }]
@@ -213,7 +199,6 @@ form.addEventListener('submit', async (e) => {
         parts: [{ text: data.reply }]
       });
 
-      // Simpan ke riwayat UI tampilan
       chatUIHistory.push({
         sender: 'bot',
         text: data.reply
@@ -238,9 +223,6 @@ function toggleFormState(enabled) {
   if (enabled) input.focus();
 }
 
-// ==========================================
-// 5. RENDER CHAT BUBBLES
-// ==========================================
 function appendUserMessage(text, fileName, fileType, fileData = null, saveToHistory = false) {
   const msgWrapper = document.createElement('div');
   msgWrapper.className = 'flex justify-end';
@@ -250,7 +232,6 @@ function appendUserMessage(text, fileName, fileType, fileData = null, saveToHist
     const isImg = fileType && fileType.startsWith('image/');
     const isAudio = fileType && fileType.startsWith('audio/');
 
-    // Tampilkan foto jika file berupa gambar
     if (isImg && fileData) {
       fileSnippet = `
         <div class="mb-2 overflow-hidden rounded-xl bg-black/10">
@@ -362,9 +343,6 @@ function escapeHtml(string) {
   return div.innerHTML;
 }
 
-// ==========================================
-// 6. QUICK SUGGESTIONS & RESET (FR-05)
-// ==========================================
 document.querySelectorAll('.quick-chip').forEach(chip => {
   chip.addEventListener('click', () => {
     input.value = chip.textContent.trim();
@@ -372,7 +350,6 @@ document.querySelectorAll('.quick-chip').forEach(chip => {
   });
 });
 
-// Tombol Reset: Menghapus semua riwayat di memori & localStorage
 btnReset.addEventListener('click', () => {
   chatHistory = [];
   chatUIHistory = [];
@@ -387,12 +364,9 @@ btnReset.addEventListener('click', () => {
   clearAttachment();
 });
 
-// Muat chat yang tersimpan saat halaman dibuka
 loadSavedChatUI();
 
-// ==========================================
-// 7. VOICE RECORDING (MIC HANDLER)
-// ==========================================
+// Penanganan perekaman audio menggunakan MediaRecorder dan timer indikator
 const btnMic = document.getElementById('btn-mic');
 const recordingTimer = document.getElementById('recording-timer');
 
@@ -435,7 +409,6 @@ if (btnMic) {
   btnMic.addEventListener('click', async (e) => {
     e.preventDefault();
 
-    // HENTIKAN REKAMAN
     if (isRecording) {
       if (mediaRecorder && mediaRecorder.state !== 'inactive') {
         mediaRecorder.stop();
@@ -443,7 +416,6 @@ if (btnMic) {
       return;
     }
 
-    // MULAI REKAMAN
     try {
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
         alert('Browser Anda tidak mendukung perekaman audio.');
@@ -470,7 +442,7 @@ if (btnMic) {
         const recordedDuration = recordingSeconds;
         resetRecordingState();
 
-        // Cegah pengiriman rekaman kosong jika pengguna langsung mematikan mic (< 1 detik)
+        // Abaikan rekaman jika berdurasi di bawah satu detik
         if (audioChunks.length === 0 || recordedDuration < 1) {
           return;
         }
@@ -485,7 +457,6 @@ if (btnMic) {
       mediaRecorder.start();
       isRecording = true;
 
-      // Jalankan Timer
       recordingSeconds = 0;
       updateTimerDisplay();
       if (recordingTimer) recordingTimer.classList.remove('hidden');
@@ -502,7 +473,6 @@ if (btnMic) {
         }
       }, 1000);
 
-      // Ubah visual tombol jadi ikon stop kotak merah
       btnMic.classList.remove('text-gray-500');
       btnMic.classList.add('text-rose-500', 'animate-pulse');
       btnMic.innerHTML = '<i data-lucide="square" class="w-5 h-5"></i>';

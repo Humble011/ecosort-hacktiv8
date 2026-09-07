@@ -5,16 +5,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EcoSort AI – Smart Waste Sorting Assistant</title>
-  <!-- Tailwind CSS CDN -->
+
+  <!-- Dependensi Pustaka: Tailwind CSS, Lucide Icons, Marked JS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       darkMode: 'class'
     }
   </script>
-  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Markdown Parser -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -22,11 +21,10 @@
 <body
   class="bg-slate-100 text-slate-800 dark:bg-slate-950 dark:text-slate-100 flex items-center justify-center min-h-screen p-3 md:p-6 antialiased font-sans transition-colors duration-300">
 
-  <!-- Container Utama Chatbot (Tengah Layar + Card) -->
+  <!-- Kontainer Utama Aplikasi -->
   <div
     class="chat-container w-full max-w-4xl h-[92vh] flex flex-col bg-white/95 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl overflow-hidden relative transition-all duration-300">
 
-    <!-- Header -->
     <header
       class="h-16 border-b border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/40 px-6 flex items-center justify-between z-10 shrink-0">
       <div class="flex items-center gap-3">
@@ -43,13 +41,11 @@
       </div>
 
       <div class="flex items-center gap-2">
-        <!-- Tombol Pengatur Tema -->
         <button id="btn-theme" type="button" title="Ubah Tema"
           class="p-2 rounded-xl text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-slate-200/70 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 transition cursor-pointer flex items-center justify-center">
           <i id="theme-icon" data-lucide="moon" class="w-4 h-4"></i>
         </button>
 
-        <!-- Tombol Reset Percakapan -->
         <button id="btn-reset" type="button"
           class="text-xs text-slate-600 hover:text-rose-600 hover:bg-rose-50 dark:text-slate-400 dark:hover:text-rose-400 dark:hover:bg-rose-500/10 px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-800 transition flex items-center gap-1.5 cursor-pointer">
           <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
@@ -58,20 +54,19 @@
       </div>
     </header>
 
-    <!-- Area Percakapan (Scrollable) -->
+    <!-- Area Riwayat Percakapan -->
     <main id="chat-box" class="flex-1 overflow-y-auto p-4 md:p-6 space-y-4">
-      <!-- Welcome Banner -->
       <div id="welcome-banner" class="m-auto text-center space-y-4 max-w-lg py-12">
         <div class="w-32 h-32 mx-auto flex items-center justify-center p-1">
           <img src="ecosort-ai.png" alt="EcoSort Mascot" class="w-full h-full object-contain" />
         </div>
-        <h2 class="text-xl font-semibold text-slate-900 dark:text-white tracking-wide">Asisten Cerdas Pemilah Sampah
+        <h2 class="text-xl font-semibold text-slate-900 dark:text-white tracking-wide">
+          Asisten Cerdas Pemilah Sampah
         </h2>
         <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
           Ketik pertanyaan atau lampirkan file (gambar, dokumen, audio) untuk mulai memilah secara tepat.
         </p>
 
-        <!-- Quick Suggestions Chips -->
         <div class="flex flex-wrap items-center justify-center gap-2 pt-2">
           <button type="button"
             class="quick-chip text-xs bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 px-3.5 py-2 rounded-full border border-slate-200 dark:border-slate-700 transition shadow-sm">
@@ -89,20 +84,17 @@
       </div>
     </main>
 
-    <!-- Footer Input Bar -->
     <footer
       class="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/50 backdrop-blur-md shrink-0">
       <div class="w-full space-y-2">
 
-        <!-- Preview Berkas Sebelum Dikirim -->
+        <!-- Pratinjau Berkas Lampiran -->
         <div id="file-preview"
           class="hidden items-center justify-between bg-slate-200/70 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 px-3.5 py-2 rounded-xl text-xs">
           <div class="flex items-center gap-3 truncate">
-            <!-- Thumbnail foto jika file berupa gambar -->
             <img id="preview-thumb"
               class="hidden w-10 h-10 rounded-lg object-cover border border-emerald-500/40 shrink-0"
               alt="Preview Gambar" />
-            <!-- Ikon alternatif jika file dokumen/audio -->
             <div id="preview-icon" class="text-emerald-600 dark:text-emerald-400 shrink-0"></div>
             <div class="flex flex-col truncate">
               <span id="preview-name" class="font-medium text-slate-800 dark:text-slate-200 truncate max-w-xs"></span>
@@ -115,7 +107,7 @@
           </button>
         </div>
 
-        <!-- Form Input Utama -->
+        <!-- Formulir Input Chat dan Berkas -->
         <form id="chat-form" class="flex items-center gap-2">
           <input type="file" id="file-input" class="hidden" accept="image/*,application/pdf,text/plain,audio/*" />
 
