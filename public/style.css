@@ -36,22 +36,32 @@ html.dark {
 
 body {
   background-color: #f8fafc !important;
-  background-image:
-    linear-gradient(rgba(248, 250, 252, 0.82), rgba(248, 250, 252, 0.82)),
-    url('./pattern.svg') !important;
-  background-repeat: repeat !important;
-  background-size: 950px auto !important;
-  background-position: center !important;
-  background-attachment: fixed !important;
+  background-image: none !important;
   color: var(--text-title);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 html.dark body {
   background-color: #030712 !important;
-  background-image:
-    linear-gradient(rgba(3, 7, 18, 0.72), rgba(3, 7, 18, 0.72)),
-    url('./pattern.svg') !important;
+  background-image: none !important;
+}
+
+@media (min-width: 768px) {
+  body {
+    background-image:
+      linear-gradient(rgba(248, 250, 252, 0.82), rgba(248, 250, 252, 0.82)),
+      url('./pattern.svg') !important;
+    background-repeat: repeat !important;
+    background-size: 950px auto !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+  }
+
+  html.dark body {
+    background-image:
+      linear-gradient(rgba(3, 7, 18, 0.72), rgba(3, 7, 18, 0.72)),
+      url('./pattern.svg') !important;
+  }
 }
 
 .chat-container {

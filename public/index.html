@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="h-full">
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>EcoSort AI – Smart Waste Sorting Assistant</title>
 
   <!-- Dependensi Pustaka: Tailwind CSS, Lucide Icons, Marked JS -->
@@ -19,120 +20,122 @@
 </head>
 
 <body
-  class="bg-slate-100 text-slate-800 dark:bg-slate-950 dark:text-slate-100 flex items-center justify-center min-h-screen p-3 md:p-6 antialiased font-sans transition-colors duration-300">
+  class="bg-slate-100 text-slate-800 dark:bg-slate-950 dark:text-slate-100 h-full w-full flex items-center justify-center p-0 md:p-6 antialiased font-sans transition-colors duration-300 overflow-hidden">
 
-  <!-- Kontainer Utama Aplikasi -->
+  <!-- Kontainer Utama: Layar penuh pada ponsel dan tampilan kartu pada layar besar -->
   <div
-    class="chat-container w-full max-w-4xl h-[92vh] flex flex-col bg-white/95 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl overflow-hidden relative transition-all duration-300">
+    class="chat-container w-full max-w-4xl h-full md:h-[92vh] flex flex-col bg-white dark:bg-slate-900 md:bg-white/95 md:dark:bg-slate-900/80 border-0 md:border border-slate-200 dark:border-slate-800 rounded-none md:rounded-3xl shadow-none md:shadow-2xl overflow-hidden relative transition-all duration-300">
 
     <header
-      class="h-16 border-b border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/40 px-6 flex items-center justify-between z-10 shrink-0">
-      <div class="flex items-center gap-3">
-        <div class="w-12 h-12 flex items-center justify-center p-0.5">
+      class="h-14 md:h-16 border-b border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-950/60 px-3 md:px-6 flex items-center justify-between z-10 shrink-0">
+      <div class="flex items-center gap-2 md:gap-3 min-w-0">
+        <div class="w-8 h-8 md:w-11 md:h-11 flex items-center justify-center p-0.5 shrink-0">
           <img src="ecosort-ai.png" alt="EcoSort AI Logo" class="w-full h-full object-contain" />
         </div>
-        <div>
-          <h1 class="text-base font-semibold tracking-wide text-slate-900 dark:text-white">EcoSort AI</h1>
-          <p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            Gemini 3.5 Flash Lite Multimodal
+        <div class="min-w-0">
+          <h1 class="text-sm md:text-base font-semibold tracking-wide text-slate-900 dark:text-white truncate">EcoSort
+            AI</h1>
+          <p class="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 truncate">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+            <span class="truncate">Gemini 3.5 Flash Lite</span>
           </p>
         </div>
       </div>
 
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-1.5 shrink-0">
         <button id="btn-theme" type="button" title="Ubah Tema"
           class="p-2 rounded-xl text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-slate-200/70 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 transition cursor-pointer flex items-center justify-center">
           <i id="theme-icon" data-lucide="moon" class="w-4 h-4"></i>
         </button>
 
-        <button id="btn-reset" type="button"
-          class="text-xs text-slate-600 hover:text-rose-600 hover:bg-rose-50 dark:text-slate-400 dark:hover:text-rose-400 dark:hover:bg-rose-500/10 px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-800 transition flex items-center gap-1.5 cursor-pointer">
-          <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-          Reset Chat
+        <button id="btn-reset" type="button" title="Reset Percakapan"
+          class="text-xs text-slate-600 hover:text-rose-600 hover:bg-rose-50 dark:text-slate-400 dark:hover:text-rose-400 dark:hover:bg-rose-500/10 p-2 md:px-3 md:py-2 rounded-xl border border-slate-300 dark:border-slate-800 transition flex items-center gap-1.5 cursor-pointer">
+          <i data-lucide="trash-2" class="w-4 h-4 shrink-0"></i>
+          <span class="hidden md:inline">Reset Chat</span>
         </button>
       </div>
     </header>
 
-    <!-- Area Riwayat Percakapan -->
-    <main id="chat-box" class="flex-1 overflow-y-auto p-4 md:p-6 space-y-4">
-      <div id="welcome-banner" class="m-auto text-center space-y-4 max-w-lg py-12">
-        <div class="w-32 h-32 mx-auto flex items-center justify-center p-1">
+    <!-- Area Percakapan -->
+    <main id="chat-box" class="flex-1 overflow-y-auto p-3.5 md:p-6 space-y-4">
+      <div id="welcome-banner" class="m-auto text-center space-y-3 max-w-lg py-6 md:py-10">
+        <div class="w-24 h-24 md:w-32 md:h-32 mx-auto flex items-center justify-center p-1">
           <img src="ecosort-ai.png" alt="EcoSort Mascot" class="w-full h-full object-contain" />
         </div>
-        <h2 class="text-xl font-semibold text-slate-900 dark:text-white tracking-wide">
+        <h2 class="text-lg md:text-xl font-semibold text-slate-900 dark:text-white tracking-wide">
           Asisten Cerdas Pemilah Sampah
         </h2>
-        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-sm mx-auto">
           Ketik pertanyaan atau lampirkan file (gambar, dokumen, audio) untuk mulai memilah secara tepat.
         </p>
 
-        <div class="flex flex-wrap items-center justify-center gap-2 pt-2">
+        <div class="flex flex-wrap items-center justify-center gap-1.5 pt-1">
           <button type="button"
-            class="quick-chip text-xs bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 px-3.5 py-2 rounded-full border border-slate-200 dark:border-slate-700 transition shadow-sm">
+            class="quick-chip text-xs bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 transition shadow-sm">
             Baterai bekas
           </button>
           <button type="button"
-            class="quick-chip text-xs bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 px-3.5 py-2 rounded-full border border-slate-200 dark:border-slate-700 transition shadow-sm">
+            class="quick-chip text-xs bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 transition shadow-sm">
             Botol minyak goreng plastik
           </button>
           <button type="button"
-            class="quick-chip text-xs bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 px-3.5 py-2 rounded-full border border-slate-200 dark:border-slate-700 transition shadow-sm">
+            class="quick-chip text-xs bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 transition shadow-sm">
             Kardus pizza berminyak
           </button>
         </div>
       </div>
     </main>
 
+    <!-- Footer Input Bar -->
     <footer
-      class="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/50 backdrop-blur-md shrink-0">
+      class="p-2.5 md:p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/95 dark:bg-slate-950/80 backdrop-blur-md shrink-0">
       <div class="w-full space-y-2">
 
         <!-- Pratinjau Berkas Lampiran -->
         <div id="file-preview"
-          class="hidden items-center justify-between bg-slate-200/70 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 px-3.5 py-2 rounded-xl text-xs">
-          <div class="flex items-center gap-3 truncate">
-            <img id="preview-thumb"
-              class="hidden w-10 h-10 rounded-lg object-cover border border-emerald-500/40 shrink-0"
+          class="hidden items-center justify-between bg-slate-200/70 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-xl text-xs">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <img id="preview-thumb" class="hidden w-8 h-8 rounded-lg object-cover border border-emerald-500/40 shrink-0"
               alt="Preview Gambar" />
             <div id="preview-icon" class="text-emerald-600 dark:text-emerald-400 shrink-0"></div>
-            <div class="flex flex-col truncate">
-              <span id="preview-name" class="font-medium text-slate-800 dark:text-slate-200 truncate max-w-xs"></span>
-              <span id="preview-size" class="text-slate-500 dark:text-slate-400 text-[11px]"></span>
+            <div class="flex flex-col min-w-0">
+              <span id="preview-name"
+                class="font-medium text-slate-800 dark:text-slate-200 truncate max-w-[140px] md:max-w-xs text-xs"></span>
+              <span id="preview-size" class="text-slate-500 dark:text-slate-400 text-[10px]"></span>
             </div>
           </div>
           <button id="btn-remove-file" type="button"
-            class="text-slate-500 hover:text-rose-500 p-1.5 transition cursor-pointer rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/40">
+            class="text-slate-500 hover:text-rose-500 p-1 transition cursor-pointer rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/40 shrink-0">
             <i data-lucide="x" class="w-4 h-4"></i>
           </button>
         </div>
 
         <!-- Formulir Input Chat dan Berkas -->
-        <form id="chat-form" class="flex items-center gap-2">
+        <form id="chat-form" class="flex items-center gap-1.5 md:gap-2">
           <input type="file" id="file-input" class="hidden" accept="image/*,application/pdf,text/plain,audio/*" />
 
           <button type="button" id="btn-attach" title="Lampirkan Gambar, Dokumen, atau Audio"
-            class="p-3 text-slate-500 hover:text-emerald-600 hover:bg-slate-200/80 dark:text-slate-400 dark:hover:text-emerald-400 dark:hover:bg-slate-800 rounded-xl transition border border-transparent dark:hover:border-slate-700 cursor-pointer">
-            <i data-lucide="paperclip" class="w-5 h-5"></i>
+            class="p-2.5 text-slate-500 hover:text-emerald-600 hover:bg-slate-200/80 dark:text-slate-400 dark:hover:text-emerald-400 dark:hover:bg-slate-800 rounded-xl transition border border-transparent dark:hover:border-slate-700 cursor-pointer shrink-0">
+            <i data-lucide="paperclip" class="w-4 h-4 md:w-5 md:h-5"></i>
           </button>
 
           <input type="text" id="user-input"
-            class="flex-1 bg-white dark:bg-slate-950/70 border border-slate-300 dark:border-slate-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 rounded-xl px-4 py-3 text-sm placeholder-slate-400 dark:placeholder-slate-500 outline-none text-slate-900 dark:text-white transition shadow-sm"
-            placeholder="Tanyakan penanganan sampah atau lampirkan berkas..." autocomplete="off" />
+            class="min-w-0 flex-1 bg-white dark:bg-slate-950/70 border border-slate-300 dark:border-slate-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 rounded-xl px-3 py-2.5 md:px-4 md:py-3 text-xs md:text-sm placeholder-slate-400 dark:placeholder-slate-500 outline-none text-slate-900 dark:text-white transition shadow-sm"
+            placeholder="Tanyakan penanganan sampah..." autocomplete="off" />
 
-          <div class="flex items-center gap-1.5">
+          <div class="flex items-center gap-1 shrink-0">
             <span id="recording-timer"
-              class="hidden text-xs font-semibold text-rose-500 font-mono select-none animate-pulse">00:00</span>
+              class="hidden text-[11px] font-semibold text-rose-500 font-mono select-none animate-pulse">00:00</span>
             <button type="button" id="btn-mic"
-              class="p-3 text-slate-500 hover:text-emerald-600 hover:bg-slate-200/80 dark:text-slate-400 dark:hover:text-emerald-400 dark:hover:bg-slate-800 rounded-xl transition border border-transparent dark:hover:border-slate-700 cursor-pointer focus:outline-none"
+              class="p-2.5 text-slate-500 hover:text-emerald-600 hover:bg-slate-200/80 dark:text-slate-400 dark:hover:text-emerald-400 dark:hover:bg-slate-800 rounded-xl transition border border-transparent dark:hover:border-slate-700 cursor-pointer focus:outline-none shrink-0"
               title="Rekam Suara">
-              <i data-lucide="mic" class="w-5 h-5"></i>
+              <i data-lucide="mic" class="w-4 h-4 md:w-5 md:h-5"></i>
             </button>
           </div>
 
           <button type="submit" id="btn-send"
-            class="bg-emerald-600 hover:bg-emerald-500 text-white p-3 rounded-xl transition flex items-center justify-center shadow-lg shadow-emerald-600/20 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer">
-            <i data-lucide="send" class="w-5 h-5"></i>
+            class="bg-emerald-600 hover:bg-emerald-500 text-white p-2.5 md:p-3 rounded-xl transition flex items-center justify-center shadow-md shadow-emerald-600/20 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer shrink-0">
+            <i data-lucide="send" class="w-4 h-4 md:w-5 md:h-5"></i>
           </button>
         </form>
       </div>
