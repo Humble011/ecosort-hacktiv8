@@ -16,10 +16,10 @@
 <p align="center">
   Smart Multimodal Waste Sorting Assistant powered by Gemini 3.5 Flash Lite
   <br />
-  <a href="https://ecosort-hacktiv8.vercel.app/"><strong>View Demo »</strong></a>
+  <a href="https://ecosort-assistant.vercel.app/"><strong>View Demo »</strong></a>
   <br />
   <br />
-  <a href="https://ecosort-hacktiv8.vercel.app/">Explore the App</a>
+  <a href="https://ecosort-assistant.vercel.app/">Explore the App</a>
   ·
   <a href="https://github.com/Humble011/ecosort-hacktiv8/issues">Report Bug</a>
   ·
