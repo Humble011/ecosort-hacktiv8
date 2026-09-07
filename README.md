@@ -4,8 +4,7 @@
 [![Forks](https://img.shields.io/github/forks/Humble011/ecosort-hacktiv8.svg?style=for-the-badge)](https://github.com/Humble011/ecosort-hacktiv8/network/members)
 [![Stargazers](https://img.shields.io/github/stars/Humble011/ecosort-hacktiv8.svg?style=for-the-badge)](https://github.com/Humble011/ecosort-hacktiv8/stargazers)
 [![Issues](https://img.shields.io/github/issues/Humble011/ecosort-hacktiv8.svg?style=for-the-badge)](https://github.com/Humble011/ecosort-hacktiv8/issues)
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
-
+[![License: MIT](https://img.shields.io/github/license/Humble011/ecosort-hacktiv8?style=for-the-badge&color=blue)](LICENSE)
 <br />
 
 <a href="https://github.com/Humble011/ecosort-hacktiv8">
@@ -47,6 +46,10 @@
 EcoSort AI is a web-based intelligent assistant designed to help users identify, sort, and manage household waste responsibly and sustainably. Powered by the multimodal capabilities of **Gemini 3.5 Flash Lite**, the application analyzes text queries, physical item photos, waste inventory documents, and direct voice recordings within the browser.
 
 ---
+
+<p align="center">
+  <img src="public/preview.png" alt="EcoSort AI Interface Preview" width="850">
+</p>
 
 ## Built With
 
@@ -105,4 +108,20 @@ Open http://localhost:3000 in your web browser.
 
 ## License
 
-Distributed under the MIT License. This project was developed as a Final Project submission for the Hacktiv8 "Maju Bareng AI for IT Professional" program.
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for full legal details.
+
+```text
+Permissions:
+✔ Commercial use
+✔ Modification
+✔ Distribution
+✔ Private use
+
+Conditions:
+ℹ License and copyright notice must be included in all copies.
+```
+
+This project was developed as a Final Project submission for the Hacktiv8 "Maju Bareng AI for IT Professional" program.
+
+
+
