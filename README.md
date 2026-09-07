@@ -45,11 +45,10 @@
 
 EcoSort AI is a web-based intelligent assistant designed to help users identify, sort, and manage household waste responsibly and sustainably. Powered by the multimodal capabilities of **Gemini 3.5 Flash Lite**, the application analyzes text queries, physical item photos, waste inventory documents, and direct voice recordings within the browser.
 
----
-
 <p align="center">
   <img src="public/preview.png" alt="EcoSort AI Interface Preview" width="850">
 </p>
+---
 
 ## Built With
 
