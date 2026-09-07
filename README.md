@@ -36,27 +36,6 @@ EcoSort AI adalah asisten cerdas berbasis web yang memandu pengguna mengidentifi
 
 ---
 
-## Struktur Direktori
-
-```text
-ecosort-hacktiv8/
-├── api/
-│   └── index.js              # Serverless handler Express.js untuk deployment Vercel
-├── public/
-│   ├── index.html            # Antarmuka web utama
-│   ├── style.css             # Penataan tata letak, variabel tema, dan media queries
-│   ├── script.js             # Logika interaksi klien, rekaman audio, dan penyimpanan lokal
-│   ├── ecosort-ai.png        # Aset visual logo dan maskot
-│   └── pattern.svg           # Aset latar belakang desktop
-├── .env.example              # Draf konfigurasi environment variable
-├── package.json              # Daftar pustaka dan metadata aplikasi Node.js
-├── vercel.json               # Konfigurasi routing serverless Vercel
-└── README.md                 # Berkas dokumentasi repositori
-
-```
-
----
-
 ## Panduan Instalasi dan Pengujian Lokal
 
 ### Prasyarat Sistem
