@@ -44,7 +44,7 @@
 
 ## About The Project
 
-EcoSort AI adalah asisten cerdas berbasis web yang memandu pengguna mengidentifikasi, memilah, dan mengelola sampah harian secara tepat serta ramah lingkungan. Sistem memanfaatkan kapabilitas multimodal **Gemini 3.5 Flash Lite** untuk menganalisis input teks, citra foto fisik, dokumen daftar limbah, maupun rekaman suara langsung via browser.
+EcoSort AI is a web-based intelligent assistant designed to help users identify, sort, and manage household waste responsibly and sustainably. Powered by the multimodal capabilities of **Gemini 3.5 Flash Lite**, the application analyzes text queries, physical item photos, waste inventory documents, and direct voice recordings within the browser.
 
 ---
 
@@ -58,60 +58,51 @@ EcoSort AI adalah asisten cerdas berbasis web yang memandu pengguna mengidentifi
 * [![Google Gemini](https://img.shields.io/badge/Gemini_AI-8E75C2?style=for-the-badge&logo=googlegemini&logoColor=white)](https://ai.google.dev/)
 * [![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 
+---
 
 ## Key Features
 
-* **Pemrosesan Multimodal Terpadu:**
-  * **Teks:** Penjelasan interaktif seputar pemilahan, jenis material, dan cara daur ulang sampah.
-  * **Gambar:** Identifikasi visual sampah fisik secara instan (`JPG`, `PNG`, `WebP`).
-  * **Dokumen:** Analisis daftar atau laporan inventaris limbah dari berkas (`PDF`, `TXT`, `CSV`).
-  * **Audio Langsung:** Perekaman suara langsung dari peramban (`audio/webm`) tanpa alur transkripsi eksternal.
-* **Klasifikasi Terstruktur:** Mengelompokkan sampah ke kategori baku (Organik, Anorganik, B3/E-Waste, Residu) dilengkapi panduan penanganan awal dan rekomendasi titik pembuangan.
-* **Penyimpanan Riwayat Percakapan:** Memanfaatkan HTML5 LocalStorage agar percakapan tetap tersimpan saat halaman dimuat ulang.
-* **Tampilan Responsif & Adaptif:** Antarmuka ramah pengguna di perangkat seluler maupun komputer, dengan dukungan Mode Terang dan Mode Gelap.
+* **Comprehensive Multimodal Input:**
+  * **Text:** Ask interactive questions regarding waste classification, material types, and recycling methods.
+  * **Images:** Instant visual identification of physical waste items (`JPG`, `PNG`, `WebP`).
+  * **Documents:** Analyze waste inventory records and reports from files (`PDF`, `TXT`, `CSV`).
+  * **Direct Audio:** In-browser voice recording (`audio/webm`) processed natively by Gemini API without external transcription layers.
+* **Structured Classification:** Categorizes waste items into standard streams (Organic, Inorganic, Hazardous/E-Waste, Residual) with pre-disposal handling steps and disposal channel recommendations.
+* **Persistent Chat Sessions:** Utilizes HTML5 LocalStorage to maintain active conversation history across page reloads.
+* **Responsive & Adaptive UI:** Mobile-first, cross-platform interface supporting both Light Mode and Dark Mode.
 
 ---
 
 ## Getting Started
 
-### Prasyarat
+### Prerequisites
 
-Pastikan perangkat lokal sudah terpasang:
-* [Node.js](https://nodejs.org/) (versi 18 ke atas)
+Ensure the following tools are installed on your local environment:
+* [Node.js](https://nodejs.org/) (version 18 or later)
 * npm (Node Package Manager)
-* Kunci API dari [Google AI Studio](https://aistudio.google.com/)
+* An API Key from [Google AI Studio](https://aistudio.google.com/)
 
-### Langkah Instalasi
+### Installation
 
-1. **Clone repositori:**
+1. **Clone the repository:**
    ```bash
    git clone [https://github.com/Humble011/ecosort-hacktiv8.git](https://github.com/Humble011/ecosort-hacktiv8.git)
    cd ecosort-hacktiv8
+2. **Install dependencies:**
+      ```bash
+    npm install
+3. **Configure environment variables:**
+   Create a .env file the root directory:
+      ```bash
+    GEMINI_API_KEY=your_gemini_api_key_here
+    PORT=3000
+4. **Run the local server:**
+   ```bash
+   npm start
+Open http://localhost:3000 in your web browser.
 
-2. **Pasang dependensi:**
-```bash
-npm install
 
-```
-
-3. **Konfigurasi Environment Variable:**
-Buat file `.env` pada direktori utama:
-```env
-GEMINI_API_KEY=masukkan_api_key_gemini_anda
-PORT=3000
-
-```
-
-4. **Jalankan server:**
-```bash
-npm start
-
-```
-
-Buka peramban di `http://localhost:3000`.
-
----
 
 ## License
 
-Didistribusikan di bawah Lisensi MIT. Proyek ini disusun untuk penyelesaian Final Project program Hacktiv8 "Maju Bareng AI for IT Professional".
+Distributed under the MIT License. This project was developed as a Final Project submission for the Hacktiv8 "Maju Bareng AI for IT Professional" program.
